@@ -1,19 +1,15 @@
-#include <DFRobotDFPlayerMini.h>
-#include <SPI.h>
-#include <SD.h>
-#include <ArduinoJson.h>
+#include "DFRobotDFPlayerMini.h"
+#include "ArduinoJson.h"
+#include "SPI.h"
+#include "SD.h"  
 
-// Pin assignments
 const int pedalPin = 2;
 const int backButton = 3;
 const int selectButton = 4;
 const int nextButton = 5;
-const int chipSelect = 10;  // DFPlayer Mini SD Card CS pin (Use pin 10)
 
-// DFPlayer Mini object
 DFRobotDFPlayerMini myDFPlayer;
 
-// Song data variables
 String songFiles[] = { "/02/song1.json", "/02/song2.json", "/02/song3.json", "/02/song4.json" };
 int currentSong = 0;
 int totalSongs = 4;
@@ -21,7 +17,7 @@ bool songSelected = false;
 
 String currentSongTitle;
 String songFile;
-int chords[20];  // Stores chord sequence
+int chords[20];
 int chordCount = 0;
 int currentChord = 0;
 
@@ -37,32 +33,28 @@ void setup() {
         Serial.println("DFPlayer Mini not detected!");
         while (true);
     }
-    myDFPlayer.volume(20); // Set volume
-
-    // Initialize SD card inside DFPlayer Mini
-    if (!SD.begin(chipSelect)) {
-        Serial.println("SD Card inside DFPlayer initialization failed!");
-        while (true);
-    }
-    Serial.println("SD Card Ready.");
-
+    myDFPlayer.volume(20);
     announceCurrentSong();
 }
 
 void loop() {
     if (!songSelected && digitalRead(backButton) == LOW) {
+        Serial.println("Back Pressed.");
         previousSong();
         delay(1000);
     }
     if (!songSelected && digitalRead(nextButton) == LOW) {
+        Serial.println("Next Pressed.");
         nextSong();
         delay(1000);
     }
     if (!songSelected && digitalRead(selectButton) == LOW) {
+        Serial.println("Select Pressed.");
         selectSong();
         delay(1000);
     }
     if (songSelected && digitalRead(pedalPin) == LOW) {
+        Serial.println("Pedal Pressed.");
         playNextChord();
         delay(1000);
     }
@@ -83,7 +75,7 @@ void announceCurrentSong() {
     Serial.println(currentSong);
 
     if (loadSongData(songFiles[currentSong])) {
-        myDFPlayer.playFolder(5, currentSong + 1); // Play song name from folder 05
+        myDFPlayer.playFolder(3, currentSong + 1); // Play song name from folder 03
     }
 }
 
