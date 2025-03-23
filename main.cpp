@@ -1,7 +1,8 @@
-#include "DFRobotDFPlayerMini.h"
 #include "ArduinoJson.h"
-#include "SPI.h"
-#include "SD.h"  
+#include "DFRobotDFPlayerMini.h"
+#include <SPI.h>
+#include "SD.h" 
+#include <SoftwareSerial.h>
 
 const int pedalPin = 2;
 const int backButton = 3;
@@ -9,6 +10,7 @@ const int selectButton = 4;
 const int nextButton = 5;
 
 DFRobotDFPlayerMini myDFPlayer;
+SoftwareSerial mySerial(10, 11);
 
 String songFiles[] = { "/02/song1.json", "/02/song2.json", "/02/song3.json", "/02/song4.json" };
 int currentSong = 0;
@@ -23,21 +25,26 @@ int currentChord = 0;
 
 void setup() {
     Serial.begin(9600);
+    mySerial.begin(9600);
     pinMode(pedalPin, INPUT_PULLUP);
     pinMode(backButton, INPUT_PULLUP);
     pinMode(selectButton, INPUT_PULLUP);
     pinMode(nextButton, INPUT_PULLUP);
 
-    // Initialize DFPlayer Mini
-    if (!myDFPlayer.begin(Serial)) {  
+//     Initialize DFPlayer Mini
+    if (!myDFPlayer.begin(mySerial)) {  
         Serial.println("DFPlayer Mini not detected!");
         while (true);
     }
+
+    Serial.println("device initiated!");
     myDFPlayer.volume(20);
     announceCurrentSong();
 }
 
 void loop() {
+  Serial.println("Back Pressed.");
+  delay(1000);
     if (!songSelected && digitalRead(backButton) == LOW) {
         Serial.println("Back Pressed.");
         previousSong();
