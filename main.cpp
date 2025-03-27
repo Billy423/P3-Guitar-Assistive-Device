@@ -39,12 +39,6 @@ void setup() {
     pinMode(selectButton, INPUT_PULLUP);
     pinMode(nextButton, INPUT_PULLUP);
 
-//     Initialize DFPlayer Mini
-    if (!myDFPlayer.begin(mySerial)) {  
-        Serial.println("DFPlayer Mini not detected!");
-        while (true);
-    }
-
     Serial.println("device initiated!");
     myDFPlayer.volume(20);
     announceCurrentSong();
