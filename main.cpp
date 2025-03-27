@@ -64,7 +64,6 @@ void setup() {
     pinMode(selectButton, INPUT_PULLUP);
     pinMode(nextButton, INPUT_PULLUP);
 
-<<<<<<< HEAD
     if (!myDFPlayer.begin(mySerial)) {  //Use softwareSerial to communicate with mp3.
         Serial.println(F("Unable to begin:"));
         Serial.println(F("1.Please recheck the connection!"));
@@ -77,10 +76,6 @@ void setup() {
     Serial.println(F("DFPlayer Mini online."));
     
     myDFPlayer.volume(30);
-=======
-    Serial.println("device initiated!");
-    myDFPlayer.volume(20);
->>>>>>> efa2b4dc22bbba2d55d6c4276f70d6eb26574a7a
     announceCurrentSong();
     myDFPlayer.playFolder(3, 1); // play "selecting songs"
 }
