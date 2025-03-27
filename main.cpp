@@ -64,6 +64,7 @@ void setup() {
     pinMode(selectButton, INPUT_PULLUP);
     pinMode(nextButton, INPUT_PULLUP);
 
+<<<<<<< HEAD
     if (!myDFPlayer.begin(mySerial)) {  //Use softwareSerial to communicate with mp3.
         Serial.println(F("Unable to begin:"));
         Serial.println(F("1.Please recheck the connection!"));
@@ -76,6 +77,10 @@ void setup() {
     Serial.println(F("DFPlayer Mini online."));
     
     myDFPlayer.volume(30);
+=======
+    Serial.println("device initiated!");
+    myDFPlayer.volume(20);
+>>>>>>> efa2b4dc22bbba2d55d6c4276f70d6eb26574a7a
     announceCurrentSong();
     myDFPlayer.playFolder(3, 1); // play "selecting songs"
 }
@@ -142,3 +147,42 @@ void playNextChord() {
         currentChord = 0;
     }
 }
+<<<<<<< HEAD
+=======
+
+bool loadSongData(String filename) {
+    File file = SD.open(filename);
+    if (!file) {
+        Serial.println("Failed to open JSON file!");
+        return false;
+    }
+
+    String jsonString = "";
+    while (file.available()) {
+        jsonString += (char)file.read();
+    }
+    file.close();
+
+    StaticJsonDocument<512> doc;
+    DeserializationError error = deserializeJson(doc, jsonString);
+    if (error) {
+        Serial.print("JSON Parsing failed: ");
+        Serial.println(error.f_str());
+        return false;
+    }
+
+    currentSongTitle = doc["title"].as<String>();
+    songFile = doc["file"].as<String>();
+
+    JsonArray chordArray = doc["chords"].as<JsonArray>();
+    chordCount = chordArray.size();
+    for (int i = 0; i < chordCount; i++) {
+        chords[i] = chordArray[i].as<int>(); // Read chord numbers
+    }
+
+    Serial.print("Loaded song: ");
+    Serial.println(currentSongTitle);
+    Serial.println();
+    return true;
+}
+>>>>>>> efa2b4dc22bbba2d55d6c4276f70d6eb26574a7a
