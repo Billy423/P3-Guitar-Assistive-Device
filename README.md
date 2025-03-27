@@ -10,30 +10,39 @@ Ensure that your **SD card is formatted as FAT32**, and organize the files in th
 
 ```
 /01/ (All unique chords stored here)
-├── 001.mp3  (Bm Chord)
-├── 002.mp3  (F# Chord)
-├── 003.mp3  (A Chord)
-├── 004.mp3  (E Chord)
-├── 005.mp3  (G Chord)
-├── 006.mp3  (D Chord)
-├── 007.mp3  (Em Chord)
-├── 008.mp3  (C Chord)
-├── 009.mp3  (Am Chord)
-├── 010.mp3  (G# Chord)
-├── 011.mp3  (F Chord)
-├── 012.mp3  (A7sus4 Chord)
+├── 001.mp3 → A
+├── 002.mp3 → Am
+├── 003.mp3 → A7sus4
+├── 004.mp3 → Am7
+├── 005.mp3 → B
+├── 006.mp3 → Bm
+├── 007.mp3 → C
+├── 008.mp3 → C#
+├── 009.mp3 → C#dim
+├── 010.mp3 → D
+├── 011.mp3 → D#
+├── 012.mp3 → E
+├── 013.mp3 → Em
+├── 014.mp3 → F
+├── 015.mp3 → F#
+├── 016.mp3 → G
+├── 017.mp3 → G#
+├── 018.mp3 → G over B
+
 
 /02/ (Each JSON file defines a song's chord sequence)
 ├── song1.json (Song 1 - Hotel California)
 ├── song2.json (Song 2 - Stairwya to Heaven)
 ├── song3.json (Song 3 - Sweet Child O' Mine)
 ├── song4.json (Song 4 - Wish You Were Here)
+├── song5.json (Song 5 - Blackbird)
 
 /03/ (Plays song names during selection)
 ├── 001.mp3  (Hotel California)
 ├── 002.mp3  (Stairwya to Heaven)
 ├── 003.mp3  (Sweet Child O' Mine)
 ├── 004.mp3  (Wish You Were Here)
+├── 005.mp3  (Blackbird)
 
 ```
 

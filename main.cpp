@@ -9,17 +9,25 @@ const int backButton = 3;
 const int selectButton = 4;
 const int nextButton = 5;
 
+
 DFRobotDFPlayerMini myDFPlayer;
 SoftwareSerial mySerial(10, 11);
 
-String songFiles[] = { "/02/song1.json", "/02/song2.json", "/02/song3.json", "/02/song4.json" };
+String songFiles[] = {
+    "/02/song1.json",
+    "/02/song2.json",
+    "/02/song3.json",
+    "/02/song4.json",
+    "/02/song5.json"
+
+};
 int currentSong = 0;
-int totalSongs = 4;
+int totalSongs = 5;
 bool songSelected = false;
 
 String currentSongTitle;
 String songFile;
-int chords[20];
+int chords[50];
 int chordCount = 0;
 int currentChord = 0;
 
