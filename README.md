@@ -29,15 +29,7 @@ Ensure that your **SD card is formatted as FAT32**, and organize the files in th
 ├── 017.mp3 → G#
 ├── 018.mp3 → G over B
 
-
-/02/ (Each JSON file defines a song's chord sequence)
-├── song1.json (Song 1 - Hotel California)
-├── song2.json (Song 2 - Stairwya to Heaven)
-├── song3.json (Song 3 - Sweet Child O' Mine)
-├── song4.json (Song 4 - Wish You Were Here)
-├── song5.json (Song 5 - Blackbird)
-
-/03/ (Plays song names during selection)
+/02/ (Plays song names during selection)
 ├── 001.mp3  (Hotel California)
 ├── 002.mp3  (Stairwya to Heaven)
 ├── 003.mp3  (Sweet Child O' Mine)
@@ -66,33 +58,6 @@ Ensure that your **SD card is formatted as FAT32**, and organize the files in th
 
 ### 4️. Looping  
 - If the song reaches the last chord, it **automatically restarts** from the first chord.  
-
----
-
-## JSON File Structure  
-Each song has its own **JSON file** stored in `/02/`. The JSON file contains:  
-
-- `"title"` → The name of the song.  
-- `"file"` → The MP3 file number for announcing the song name.  
-- `"chords"` → The sequence of chords (matching the numbers in `/01/`).  
-
-### Example: **`/02/song1.json` (You Are My Sunshine)**
-```json
-{
-    "title": "You Are My Sunshine",
-    "file": "001.mp3",
-    "chords": [1, 5, 6, 4, 1, 5, 1]
-}
-```
-
-### Example: **`/02/song2.json` (Twinkle Twinkle Little Star)**
-```json
-{
-    "title": "Twinkle Twinkle Little Star",
-    "file": "002.mp3",
-    "chords": [1, 1, 5, 5, 6, 6, 5]
-}
-```
 
 ---
 
